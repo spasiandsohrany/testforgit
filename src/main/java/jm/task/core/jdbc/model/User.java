@@ -36,8 +36,8 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getName(String name) {
+        return this.name;
     }
 
     public void setName(String name) {
@@ -58,5 +58,16 @@ public class User {
 
     public void setAge(Byte age) {
         this.age = age;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
