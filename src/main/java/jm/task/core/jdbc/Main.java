@@ -8,10 +8,11 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Util.getSessionFactory();
         //Util util = new Util();
-        Util.getConnection();
-        UserDao userDao = new UserDaoJDBCImpl();
-        System.out.println(userDao.getAllUsers());
+        //Util.getConnection();
+        //UserDao userDao = new UserDaoJDBCImpl();
+        //System.out.println(userDao.getAllUsers());
         /*userDao.dropUsersTable();
         userDao.createUsersTable();
         userDao.saveUser("In", "Ib", (byte) 21);

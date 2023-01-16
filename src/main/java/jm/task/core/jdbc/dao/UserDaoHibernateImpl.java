@@ -1,10 +1,13 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class UserDaoHibernateImpl implements UserDao {
+public class UserDaoHibernateImpl extends Util implements UserDao {
+    SessionFactory sessionFactory = getSessionFactory();
     public UserDaoHibernateImpl() {
 
     }
@@ -12,6 +15,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
+
 
     }
 
