@@ -119,10 +119,9 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     public void cleanUsersTable() {
         String cut = "DELETE FROM USERS";
-        //String cut = "TRUNCATE TABLE USERS";
         try {
             st = connection.createStatement();
-            st.execute(cut);
+            st.executeUpdate(cut);
         } catch (SQLException e) {
             e.printStackTrace();
         }

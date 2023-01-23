@@ -16,6 +16,7 @@ public class Util {
     private static SessionFactory sessionFactory;
     private static final String hostName = "localhost";
     private static final String dbName = "dbtest";
+    private static final String dbName2 = "dbhib";
     private static final String userName = "root";
     ;
     private static final String password = "root";
@@ -56,7 +57,7 @@ public class Util {
                 setting.put(Environment.URL, connectionURL);
                 setting.put(Environment.USER, userName);
                 setting.put(Environment.PASS, password);
-                setting.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+                setting.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
                 setting.put(Environment.SHOW_SQL, "true");
                 setting.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 setting.put(Environment.HBM2DDL_AUTO, "");
