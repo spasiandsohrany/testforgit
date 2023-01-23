@@ -105,23 +105,13 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
                 res.add(user);
             }
                 return res;
-        /*catch (SQLException e) {
-            e.printStackTrace();
-        } *//*finally {
-            try {
-                connection.close();
-                st.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }*/
     }
 
     public void cleanUsersTable() {
         String cut = "DELETE FROM USERS";
         try {
-            st = connection.createStatement();
-            st.executeUpdate(cut);
+            ps = connection.prepareStatement(cut);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
