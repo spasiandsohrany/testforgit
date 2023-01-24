@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserServiceImpl userService = new UserServiceImpl();
+        /*UserServiceImpl userService = new UserServiceImpl();
         userService.dropUsersTable();
         userService.createUsersTable();
         userService.saveUser("Nikita", "Kazakov", (byte) 22);
@@ -20,6 +20,8 @@ public class Main {
         userService.saveUser("Nikita", "Pirogov", (byte) 24);
         userService.removeUserById(1);
         System.out.println(userService.getAllUsers());
-        //userService.cleanUsersTable();
+        //userService.cleanUsersTable();*/
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.dropUsersTable();
     }
 }

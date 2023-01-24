@@ -27,59 +27,39 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
                 " age TINYINT(3) NOT NULL)" +
                 " ENGINE=InnoDB DEFAULT CHARSET=latin1";
         try {
-            st = connection.createStatement();
-            st.executeUpdate(sql);
+            ps = connection.prepareStatement(sql);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } /*finally {
-            try {
-                connection.close();
-                st.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }*/
+        }
     }
 
     public void dropUsersTable() {
         String dut = "drop table IF EXISTS Users";
         try {
-            st = connection.createStatement();
-            st.executeUpdate(dut);
+            ps = connection.prepareStatement(dut);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } /*finally {
-            try {
-                connection.close();
-                st.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }*/
+        }
     }
 
     public void saveUser(String name, String lastName, byte age) {
         String su = "INSERT INTO USERS (name, lastName, age)" +
-                "VALUES ('"+ name +"', '" + lastName + "'," + age + ")";
+                "VALUES ('" + name + "', '" + lastName + "'," + age + ")";
         try {
-            st = connection.createStatement();
-            st.executeUpdate(su);
+            ps = connection.prepareStatement(su);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } /*finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }*/
+        }
     }
 
     public void removeUserById(long id) {
         String rubi = "DELETE FROM USERS WHERE id =" + id;
         try {
-            st = connection.createStatement();
-            st.executeUpdate(rubi);
+            ps = connection.prepareStatement(rubi);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -87,24 +67,22 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     public List<User> getAllUsers() throws SQLException {
         String gau = "select * from Users";
-            ps = connection.prepareStatement(gau);
-            ResultSet rs = ps.executeQuery();
-            /*st = connection.createStatement();
-            ResultSet rs = st.executeQuery(gau);*/
-            ArrayList<User> res = new ArrayList<>();
-            while (rs.next()) {
-                Long id = rs.getLong(1);
-                String name = rs.getString(2);
-                String lastName = rs.getString(3);
-                Byte age = rs.getByte(4);
-                User user = new User();
-                user.setId(id);
-                user.setName(name);
-                user.setLastName(lastName);
-                user.setAge(age);
-                res.add(user);
-            }
-                return res;
+        ps = connection.prepareStatement(gau);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<User> res = new ArrayList<>();
+        while (rs.next()) {
+            Long id = rs.getLong(1);
+            String name = rs.getString(2);
+            String lastName = rs.getString(3);
+            Byte age = rs.getByte(4);
+            User user = new User();
+            user.setId(id);
+            user.setName(name);
+            user.setLastName(lastName);
+            user.setAge(age);
+            res.add(user);
+        }
+        return res;
     }
 
     public void cleanUsersTable() {
