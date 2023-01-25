@@ -16,7 +16,6 @@ public class Util {
     private static SessionFactory sessionFactory;
     private static final String hostName = "localhost";
     private static final String dbName = "dbtest";
-    private static final String dbName2 = "dbhib";
     private static final String userName = "root";
     ;
     private static final String password = "root";
